@@ -18,6 +18,7 @@ const resources = [
     desc: "Votre outil d'aide à la décision vaccinale. Accès complet à l'application.",
     icon: ShieldCheck,
     badge: "Application principale",
+    iconClass: "bg-gradient-brand",
   },
   {
     href: "https://www.inspq.qc.ca/sante-voyage/guide/pays",
@@ -25,6 +26,7 @@ const resources = [
     desc: "Guide d'intervention santé voyage : recommandations vaccinales par pays.",
     icon: Plane,
     badge: "Référence officielle",
+    iconClass: "bg-gradient-inspq",
   },
   {
     href: "https://msss.gouv.qc.ca/professionnels/vaccination/piq-vaccins/",
@@ -32,6 +34,7 @@ const resources = [
     desc: "Protocole d'immunisation du Québec, ministère de la Santé.",
     icon: BookOpen,
     badge: "MSSS",
+    iconClass: "bg-gradient-piq",
   },
 ] as const;
 

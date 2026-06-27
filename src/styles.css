@@ -145,6 +145,12 @@
 @utility shadow-glow {
   box-shadow: var(--shadow-glow);
 }
+@utility bg-gradient-inspq {
+  background-image: linear-gradient(135deg, #3f5563 0%, #e8825a 100%);
+}
+@utility bg-gradient-piq {
+  background-image: linear-gradient(135deg, #1f3b6e 0%, #f5c518 100%);
+}
 @utility glass-card {
   background-color: color-mix(in oklab, var(--card) 80%, transparent);
   backdrop-filter: blur(12px);
