@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Portail sécurisé donnant accès à VacciCheck, RxVigilance et aux ressources de référence en vaccination et santé voyage.",
       },
       { name: "author", content: "ConseilSV" },
-      { property: "og:title", content: "ConseilSV" },
+      { property: "og:title", content: "ConseilSV — Portail vaccination & santé voyage" },
       {
         property: "og:description",
         content:
@@ -89,6 +89,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "ConseilSV — Portail vaccination & santé voyage" },
+      { name: "description", content: "VacciGuard Login provides secure access to VacciCheck, with user account management and links to health resources." },
+      { property: "og:description", content: "VacciGuard Login provides secure access to VacciCheck, with user account management and links to health resources." },
+      { name: "twitter:description", content: "VacciGuard Login provides secure access to VacciCheck, with user account management and links to health resources." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/aE1uwWnLk6fIEXuhIopqhXGAORC3/social-images/social-1782608268766-generated-image_(4).webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/aE1uwWnLk6fIEXuhIopqhXGAORC3/social-images/social-1782608268766-generated-image_(4).webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
