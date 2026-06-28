@@ -74,18 +74,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VacciConseil — Portail vaccination & santé voyage" },
+      { title: "ConseilSV — Portail vaccination & santé voyage" },
       {
         name: "description",
         content:
-          "Portail sécurisé donnant accès à VacciCheck et aux ressources de référence en vaccination et santé voyage (INSPQ, PIQ).",
+          "Portail sécurisé donnant accès à VacciCheck, RxVigilance et aux ressources de référence en vaccination et santé voyage.",
       },
-      { name: "author", content: "VacciConseil" },
-      { property: "og:title", content: "VacciConseil" },
+      { name: "author", content: "ConseilSV" },
+      { property: "og:title", content: "ConseilSV" },
       {
         property: "og:description",
         content:
-          "Accès sécurisé à VacciCheck et aux ressources de vaccination / santé voyage.",
+          "Accès sécurisé à VacciCheck, RxVigilance et aux ressources de vaccination / santé voyage.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
