@@ -5,41 +5,38 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
 import { useQueryClient } from "@tanstack/react-query";
-
-async function loadAdminStatus() {
-  const { data: userData } = await supabase.auth.getUser();
-  if (!userData.user) return false;
-
-  const { data, error } = await supabase.rpc("has_role", {
-    _user_id: userData.user.id,
-    _role: "admin",
-  });
-  if (error) return false;
-  return data === true;
-}
+import { useServerFn } from "@tanstack/react-start";
+import { getMyAdminStatus } from "@/lib/admin.functions";
 
 export function AppHeader() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const fetchAdminStatus = useServerFn(getMyAdminStatus);
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     let active = true;
-    loadAdminStatus().then((status) => {
-      if (active) setIsAdmin(status);
-    });
+
+    async function loadAdminStatus() {
+      try {
+        const status = await fetchAdminStatus();
+        if (active) setIsAdmin(status.isAdmin);
+      } catch {
+        if (active) setIsAdmin(false);
+      }
+    }
+
+    loadAdminStatus();
 
     const { data: sub } = supabase.auth.onAuthStateChange(() => {
-      loadAdminStatus().then((status) => {
-        if (active) setIsAdmin(status);
-      });
+      loadAdminStatus();
     });
 
     return () => {
       active = false;
       sub.subscription.unsubscribe();
     };
-  }, []);
+  }, [fetchAdminStatus]);
 
   async function signOut() {
     await queryClient.cancelQueries();
