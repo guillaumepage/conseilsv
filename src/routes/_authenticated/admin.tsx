@@ -45,6 +45,19 @@ function AdminPage() {
     }
   }
 
+  async function onToggleApproval(u: AdminUser) {
+    setPending(u.id);
+    try {
+      await updateApproval({ data: { userId: u.id, approved: !u.approved } });
+      toast.success(u.approved ? "Approbation retirée" : "Compte approuvé");
+      await refetch();
+    } catch (e: any) {
+      toast.error(e.message ?? "Erreur");
+    } finally {
+      setPending(null);
+    }
+  }
+
   async function onSaveUser(input: AdminUserForm) {
     setPending(input.id);
     try {
