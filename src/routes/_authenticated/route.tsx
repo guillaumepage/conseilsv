@@ -5,10 +5,13 @@ import { ensureMyProfile } from "@/lib/user.functions";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
-  beforeLoad: async () => {
+  beforeLoad: async ({ location }) => {
     const { data, error } = await supabase.auth.getUser();
     if (error || !data.user) throw redirect({ to: "/auth" });
-    await ensureMyProfile();
+    const status = await ensureMyProfile();
+    if (!status.approved && location.pathname !== "/pending") {
+      throw redirect({ to: "/pending" });
+    }
     return { user: data.user };
   },
   component: () => (
