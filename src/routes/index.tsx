@@ -81,8 +81,8 @@ function Landing() {
               <FileText className="size-3.5 text-primary" />
               Portail professionnel sécurisé
             </div>
-            <h1 className="mt-6 text-4xl font-extrabold leading-tight md:text-6xl">
-              <span className="text-gradient-brand">ConseilSV</span>, votre hub
+            <h1 className="mt-6 pb-2 text-4xl font-extrabold leading-[1.15] md:text-6xl">
+              <span className="inline-block pr-1 text-gradient-brand">ConseilSV</span>, votre hub
               santé voyage.
             </h1>
             <p className="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
