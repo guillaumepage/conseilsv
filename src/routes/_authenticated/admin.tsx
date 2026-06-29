@@ -198,8 +198,22 @@ type AdminUser = {
   profession: Profession | null;
   license_number: string | null;
   subscription_tier: SubscriptionTier;
+  approved: boolean;
   created_at: string;
   roles: string[];
+};
+
+const PROFESSION_LABELS: Record<Profession, string> = {
+  medecin: "Médecin",
+  pharmacien: "Pharmacien(ne)",
+  infirmiere: "Infirmier(ère)",
+  etudiant: "Étudiant(e)",
+  autre: "Autre",
+};
+
+const SUBSCRIPTION_LABELS: Record<SubscriptionTier, string> = {
+  free: "Gratuit",
+  pro: "Payant",
 };
 type AdminUserForm = {
   id: string;
