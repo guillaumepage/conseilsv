@@ -123,6 +123,7 @@ function AdminPage() {
                 <TableHead>Licence</TableHead>
                 <TableHead>Rôle</TableHead>
                 <TableHead>Abonnement</TableHead>
+                <TableHead>Statut</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -131,7 +132,7 @@ function AdminPage() {
                 <TableRow key={u.id}>
                   <TableCell className="font-medium">{u.email}</TableCell>
                   <TableCell>{u.full_name ?? "—"}</TableCell>
-                  <TableCell>{u.profession ?? "—"}</TableCell>
+                  <TableCell>{u.profession ? PROFESSION_LABELS[u.profession] : "—"}</TableCell>
                   <TableCell>{u.license_number ?? "—"}</TableCell>
                   <TableCell>
                     {u.roles.includes("admin") ? (
@@ -142,11 +143,34 @@ function AdminPage() {
                   </TableCell>
                   <TableCell>
                     <Badge variant={u.subscription_tier === "pro" ? "default" : "outline"}>
-                      {u.subscription_tier}
+                      {SUBSCRIPTION_LABELS[u.subscription_tier]}
                     </Badge>
+                  </TableCell>
+                  <TableCell>
+                    {u.approved ? (
+                      <Badge className="bg-emerald-600 text-white hover:bg-emerald-600">Approuvé</Badge>
+                    ) : (
+                      <Badge variant="outline" className="border-amber-500 text-amber-700">En attente</Badge>
+                    )}
                   </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
+                      <Button
+                        size="sm"
+                        variant={u.approved ? "outline" : "default"}
+                        className={!u.approved ? "bg-gradient-brand text-primary-foreground hover:opacity-90" : ""}
+                        disabled={pending === u.id}
+                        onClick={() => onToggleApproval(u)}
+                      >
+                        {pending === u.id ? (
+                          <Loader2 className="size-3.5 animate-spin" />
+                        ) : u.approved ? (
+                          <X className="size-3.5" />
+                        ) : (
+                          <Check className="size-3.5" />
+                        )}
+                        {u.approved ? "Révoquer" : "Approuver"}
+                      </Button>
                       <Button size="sm" variant="ghost" onClick={() => setEditingUser(u)}>
                         <Edit3 className="size-3.5" />
                         Modifier
@@ -170,7 +194,7 @@ function AdminPage() {
               ))}
               {data && data.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={7} className="py-10 text-center text-muted-foreground">
+                  <TableCell colSpan={8} className="py-10 text-center text-muted-foreground">
                     Aucun usager pour le moment.
                   </TableCell>
                 </TableRow>
