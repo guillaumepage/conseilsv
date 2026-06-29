@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Edit3, Loader2, KeyRound, ShieldAlert } from "lucide-react";
 import { listUsers, sendPasswordReset, setUserAdminRole, updateUserProfileByAdmin } from "@/lib/admin.functions";
 import { Button } from "@/components/ui/button";
@@ -174,9 +174,18 @@ function AdminPage() {
   );
 }
 
-type AdminUser = NonNullable<Awaited<ReturnType<ReturnType<typeof useServerFn<typeof listUsers>>>>>[number];
 type Profession = "medecin" | "pharmacien" | "infirmiere" | "etudiant" | "autre";
 type SubscriptionTier = "free" | "pro";
+type AdminUser = {
+  id: string;
+  email: string;
+  full_name: string | null;
+  profession: Profession | null;
+  license_number: string | null;
+  subscription_tier: SubscriptionTier;
+  created_at: string;
+  roles: string[];
+};
 type AdminUserForm = {
   id: string;
   full_name: string;
@@ -211,14 +220,14 @@ function EditUserDialog({
   const [subscriptionTier, setSubscriptionTier] = useState<SubscriptionTier>("free");
   const [isAdmin, setIsAdmin] = useState(false);
 
-  if (user && user.id !== currentUserId) {
-    currentUserId = user.id;
+  useEffect(() => {
+    if (!user) return;
     setFullName(user.full_name ?? "");
-    setProfession((user.profession as Profession | null) ?? "");
+    setProfession(user.profession ?? "");
     setLicenseNumber(user.license_number ?? "");
-    setSubscriptionTier((user.subscription_tier as SubscriptionTier | null) ?? "free");
+    setSubscriptionTier(user.subscription_tier ?? "free");
     setIsAdmin(user.roles.includes("admin"));
-  }
+  }, [user]);
 
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -296,5 +305,3 @@ function EditUserDialog({
     </Dialog>
   );
 }
-
-let currentUserId = "";
