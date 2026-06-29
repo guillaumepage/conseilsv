@@ -24,6 +24,7 @@ function AdminPage() {
   const reset = useServerFn(sendPasswordReset);
   const updateProfile = useServerFn(updateUserProfileByAdmin);
   const updateRole = useServerFn(setUserAdminRole);
+  const updateApproval = useServerFn(setUserApproval);
   const [pending, setPending] = useState<string | null>(null);
   const [editingUser, setEditingUser] = useState<AdminUser | null>(null);
 
