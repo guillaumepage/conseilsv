@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, ExternalLink, FileText, Plane, BookOpen } from "lucide-react";
+import { useState } from "react";
+import { Activity, Bug, Download, ExternalLink, FileText, Luggage, Mountain, Plane, BookOpen, Shield, Sun, Syringe, Thermometer, Waves, Wind } from "lucide-react";
 import vaccicheckLogo from "@/assets/vaccicheck-logo.png.asset.json";
 import rxLogo from "@/assets/rxvigilance-logo.png.asset.json";
 import diarrheePdf from "@/assets/diarrhee-du-voyage.pdf.asset.json";
@@ -9,6 +10,15 @@ import bagagesPdf from "@/assets/liste-de-bagages.pdf.asset.json";
 import solairePdf from "@/assets/protection-solaire.pdf.asset.json";
 import malariaPdf from "@/assets/le-paludisme-malaria.pdf.asset.json";
 import montagnePdf from "@/assets/sejour-en-altitude-mal-des-montagnes.pdf.asset.json";
+import hepatiteBPdf from "@/assets/l-hepatite-b.pdf.asset.json";
+import hepatiteAPdf from "@/assets/l-hepatite-a.pdf.asset.json";
+import zikaPdf from "@/assets/le-virus-zika.pdf.asset.json";
+import typhoidePdf from "@/assets/la-typhoide.pdf.asset.json";
+import ragePdf from "@/assets/la-rage.pdf.asset.json";
+import poliomyelitePdf from "@/assets/la-poliomyelite.pdf.asset.json";
+import pestePdf from "@/assets/la-peste.pdf.asset.json";
+import transportsPdf from "@/assets/le-mal-des-transports.pdf.asset.json";
+import fievreJaunePdf from "@/assets/la-fievre-jaune.pdf.asset.json";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
@@ -49,7 +59,6 @@ const resources = [
     external: true,
   },
   {
-    href: "#rxvigilance",
     title: "RxVigilance",
     desc: "Formulaires PDF pratiques pour vos conseils aux voyageurs.",
     logo: rxLogo.url,
@@ -60,16 +69,27 @@ const resources = [
 ] as const;
 
 const rxForms = [
-  { title: "Diarrhée du voyage", asset: diarrheePdf.url },
-  { title: "Échelle du Lac Louise", asset: altitudeScalePdf.url },
-  { title: "Les piqûres d'insectes", asset: insectesPdf.url },
-  { title: "Liste de bagages", asset: bagagesPdf.url },
-  { title: "Protection solaire", asset: solairePdf.url },
-  { title: "Le paludisme (malaria)", asset: malariaPdf.url },
-  { title: "Séjour en altitude — le mal des montagnes", asset: montagnePdf.url },
+  { title: "Diarrhée du voyage", asset: diarrheePdf.url, icon: Waves },
+  { title: "Échelle du Lac Louise", asset: altitudeScalePdf.url, icon: Activity },
+  { title: "Les piqûres d'insectes", asset: insectesPdf.url, icon: Bug },
+  { title: "Liste de bagages", asset: bagagesPdf.url, icon: Luggage },
+  { title: "Protection solaire", asset: solairePdf.url, icon: Sun },
+  { title: "Le paludisme (malaria)", asset: malariaPdf.url, icon: Bug },
+  { title: "Séjour en altitude — le mal des montagnes", asset: montagnePdf.url, icon: Mountain },
+  { title: "L’hépatite B", asset: hepatiteBPdf.url, icon: Syringe },
+  { title: "L’hépatite A", asset: hepatiteAPdf.url, icon: Syringe },
+  { title: "Le virus Zika", asset: zikaPdf.url, icon: Bug },
+  { title: "La typhoïde", asset: typhoidePdf.url, icon: Shield },
+  { title: "La rage", asset: ragePdf.url, icon: Shield },
+  { title: "La poliomyélite", asset: poliomyelitePdf.url, icon: Activity },
+  { title: "La peste", asset: pestePdf.url, icon: Bug },
+  { title: "Le mal des transports", asset: transportsPdf.url, icon: Wind },
+  { title: "La fièvre jaune", asset: fievreJaunePdf.url, icon: Thermometer },
 ] as const;
 
 function Dashboard() {
+  const [showRxForms, setShowRxForms] = useState(false);
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-10">
       <div className="mb-10">
@@ -82,14 +102,9 @@ function Dashboard() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {resources.map((r) => (
-          <a
-            key={r.href}
-            href={r.href}
-            target={r.external ? "_blank" : undefined}
-            rel={r.external ? "noopener noreferrer" : undefined}
-            className="group flex flex-col rounded-2xl glass-card p-6 transition-all hover:-translate-y-1 hover:shadow-elegant"
-          >
+        {resources.map((r) => {
+          const content = (
+            <>
             <div className="flex items-start justify-between">
               <div className={`inline-flex size-12 items-center justify-center rounded-xl text-primary-foreground shadow-glow ${r.iconClass}`}>
                 {"logo" in r ? (
@@ -110,11 +125,33 @@ function Dashboard() {
             <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
               {r.external ? "Ouvrir" : "Voir les PDF"} {r.external ? <ExternalLink className="size-3.5" /> : <FileText className="size-3.5" />}
             </span>
-          </a>
-        ))}
+            </>
+          );
+
+          return r.external ? (
+            <a
+              key={r.href}
+              href={r.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col rounded-2xl glass-card p-6 text-left transition-all hover:-translate-y-1 hover:shadow-elegant"
+            >
+              {content}
+            </a>
+          ) : (
+            <button
+              key={r.title}
+              type="button"
+              onClick={() => setShowRxForms((open) => !open)}
+              className="group flex flex-col rounded-2xl glass-card p-6 text-left transition-all hover:-translate-y-1 hover:shadow-elegant"
+            >
+              {content}
+            </button>
+          );
+        })}
       </div>
 
-      <section id="rxvigilance" className="mt-12 scroll-mt-24">
+      {showRxForms && <section id="rxvigilance" className="mt-12 scroll-mt-24">
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
             <h2 className="text-2xl font-extrabold">RxVigilance</h2>
@@ -133,14 +170,14 @@ function Dashboard() {
               className="group flex items-center gap-4 rounded-2xl glass-card p-4 transition-all hover:-translate-y-0.5 hover:shadow-soft"
             >
               <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-rx text-primary-foreground shadow-soft">
-                <FileText className="size-5" />
+                <form.icon className="size-5" />
               </span>
               <span className="min-w-0 flex-1 font-medium">{form.title}</span>
               <Download className="size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
             </a>
           ))}
         </div>
-      </section>
+      </section>}
     </main>
   );
 }
