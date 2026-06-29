@@ -145,7 +145,7 @@ function FeatureCard({
     <div className="group rounded-2xl glass-card p-6 transition-all hover:shadow-elegant">
       <div className={`inline-flex size-12 items-center justify-center rounded-xl text-primary-foreground shadow-glow ${iconClass}`}>
         {logo ? (
-          <img src={logo} alt="" className="size-10 rounded-lg bg-card object-contain p-1" />
+          <img src={logo} alt="" className="size-10 rounded-lg border-[3px] border-card bg-card object-contain p-1" />
         ) : Icon ? (
           <Icon className="size-6" />
         ) : null}
