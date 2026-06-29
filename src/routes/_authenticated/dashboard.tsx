@@ -124,7 +124,7 @@ function Dashboard() {
             <div className="flex items-start justify-between">
               <div className={`inline-flex size-12 items-center justify-center rounded-xl text-primary-foreground shadow-glow ${r.iconClass}`}>
                 {"logo" in r ? (
-                  <img src={r.logo} alt="" className="size-10 rounded-lg border-[3px] border-card bg-card object-contain p-1" />
+                  <img src={r.logo} alt="" className="size-10 rounded-lg border-[6px] border-card bg-card object-contain p-1" />
                 ) : (
                   <r.icon className="size-6" />
                 )}
