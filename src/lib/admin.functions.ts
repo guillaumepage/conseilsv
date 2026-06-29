@@ -44,7 +44,7 @@ export const listUsers = createServerFn({ method: "GET" })
 
     const { data: profiles, error } = await supabaseAdmin
       .from("profiles")
-      .select("id,email,full_name,profession,license_number,subscription_tier,created_at")
+      .select("id,email,full_name,profession,license_number,subscription_tier,approved,created_at")
       .order("created_at", { ascending: false });
     if (error) throw new Error(error.message);
 
@@ -57,6 +57,22 @@ export const listUsers = createServerFn({ method: "GET" })
     });
 
     return (profiles ?? []).map((p) => ({ ...p, roles: roleMap.get(p.id) ?? [] }));
+  });
+
+export const setUserApproval = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: unknown) =>
+    z.object({ userId: z.string().uuid(), approved: z.boolean() }).parse(data),
+  )
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context.userId);
+    const supabaseAdmin = await getAdminClient();
+    const { error } = await supabaseAdmin
+      .from("profiles")
+      .update({ approved: data.approved })
+      .eq("id", data.userId);
+    if (error) throw new Error(error.message);
+    return { ok: true };
   });
 
 export const sendPasswordReset = createServerFn({ method: "POST" })
