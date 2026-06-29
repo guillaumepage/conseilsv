@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Activity, Bug, Download, ExternalLink, FileText, Luggage, Mountain, Plane, BookOpen, Shield, Sun, Syringe, Thermometer, Waves, Wind } from "lucide-react";
+import { Activity, Baby, Bug, Car, ClipboardList, Clock, Download, ExternalLink, FileText, Luggage, Mountain, Plane, BookOpen, Ruler, Sun, Syringe, Toilet } from "lucide-react";
 import vaccicheckLogo from "@/assets/vaccicheck-logo.png.asset.json";
 import rxLogo from "@/assets/rxvigilance-logo.png.asset.json";
 import diarrheePdf from "@/assets/diarrhee-du-voyage.pdf.asset.json";
@@ -19,6 +19,14 @@ import poliomyelitePdf from "@/assets/la-poliomyelite.pdf.asset.json";
 import pestePdf from "@/assets/la-peste.pdf.asset.json";
 import transportsPdf from "@/assets/le-mal-des-transports.pdf.asset.json";
 import fievreJaunePdf from "@/assets/la-fievre-jaune.pdf.asset.json";
+import denguePdf from "@/assets/la-fievre-dengue.pdf.asset.json";
+import encephalitePdf from "@/assets/l-encephalite-japonaise.pdf.asset.json";
+import choleraPdf from "@/assets/le-cholera.pdf.asset.json";
+import chikungunyaPdf from "@/assets/chikungunya.pdf.asset.json";
+import grossessePdf from "@/assets/voyager-grossesse.pdf.asset.json";
+import decalagePdf from "@/assets/le-decalage-horaire.pdf.asset.json";
+import planificationPdf from "@/assets/planification-voyage-prudence-sante.pdf.asset.json";
+import avionPdf from "@/assets/le-transport-en-avion.pdf.asset.json";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
@@ -69,8 +77,8 @@ const resources = [
 ] as const;
 
 const rxForms = [
-  { title: "Diarrhée du voyage", asset: diarrheePdf.url, icon: Waves },
-  { title: "Échelle du Lac Louise", asset: altitudeScalePdf.url, icon: Activity },
+  { title: "Diarrhée du voyage", asset: diarrheePdf.url, icon: Toilet },
+  { title: "Échelle du Lac Louise", asset: altitudeScalePdf.url, icon: Ruler },
   { title: "Les piqûres d'insectes", asset: insectesPdf.url, icon: Bug },
   { title: "Liste de bagages", asset: bagagesPdf.url, icon: Luggage },
   { title: "Protection solaire", asset: solairePdf.url, icon: Sun },
@@ -79,12 +87,20 @@ const rxForms = [
   { title: "L’hépatite B", asset: hepatiteBPdf.url, icon: Syringe },
   { title: "L’hépatite A", asset: hepatiteAPdf.url, icon: Syringe },
   { title: "Le virus Zika", asset: zikaPdf.url, icon: Bug },
-  { title: "La typhoïde", asset: typhoidePdf.url, icon: Shield },
-  { title: "La rage", asset: ragePdf.url, icon: Shield },
-  { title: "La poliomyélite", asset: poliomyelitePdf.url, icon: Activity },
+  { title: "La typhoïde", asset: typhoidePdf.url, icon: Syringe },
+  { title: "La rage", asset: ragePdf.url, icon: Syringe },
+  { title: "La poliomyélite", asset: poliomyelitePdf.url, icon: Syringe },
   { title: "La peste", asset: pestePdf.url, icon: Bug },
-  { title: "Le mal des transports", asset: transportsPdf.url, icon: Wind },
-  { title: "La fièvre jaune", asset: fievreJaunePdf.url, icon: Thermometer },
+  { title: "Le mal des transports", asset: transportsPdf.url, icon: Car },
+  { title: "La fièvre jaune", asset: fievreJaunePdf.url, icon: Syringe },
+  { title: "La fièvre dengue", asset: denguePdf.url, icon: Bug },
+  { title: "L’encéphalite japonaise", asset: encephalitePdf.url, icon: Syringe },
+  { title: "Le choléra", asset: choleraPdf.url, icon: Syringe },
+  { title: "Chikungunya", asset: chikungunyaPdf.url, icon: Bug },
+  { title: "Voyager durant la grossesse", asset: grossessePdf.url, icon: Baby },
+  { title: "Le décalage horaire", asset: decalagePdf.url, icon: Clock },
+  { title: "Planification voyage — prudence santé", asset: planificationPdf.url, icon: ClipboardList },
+  { title: "Le transport en avion", asset: avionPdf.url, icon: Plane },
 ] as const;
 
 function Dashboard() {
@@ -93,7 +109,7 @@ function Dashboard() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-10">
       <div className="mb-10">
-        <h1 className="text-3xl font-extrabold md:text-4xl">
+        <h1 className="pb-1 text-3xl font-extrabold leading-[1.15] md:text-4xl">
           Bienvenue sur <span className="text-gradient-brand">ConseilSV</span>
         </h1>
         <p className="mt-2 text-muted-foreground">
@@ -108,7 +124,7 @@ function Dashboard() {
             <div className="flex items-start justify-between">
               <div className={`inline-flex size-12 items-center justify-center rounded-xl text-primary-foreground shadow-glow ${r.iconClass}`}>
                 {"logo" in r ? (
-                  <img src={r.logo} alt="" className="size-10 rounded-lg bg-card object-contain p-1" />
+                  <img src={r.logo} alt="" className="size-10 rounded-lg border-[3px] border-card bg-card object-contain p-1" />
                 ) : (
                   <r.icon className="size-6" />
                 )}
