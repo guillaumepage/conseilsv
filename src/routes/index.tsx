@@ -122,7 +122,7 @@ function Landing() {
       </section>
 
       <footer className="border-t border-border/60 py-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} ConseilSV — Pour usage professionnel
+        © 2026 ConseilSV — Pour usage professionnel
       </footer>
     </div>
   );
