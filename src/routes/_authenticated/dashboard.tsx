@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Activity, Baby, Bug, Car, ClipboardList, Clock, Download, ExternalLink, FileText, GitBranch, Luggage, Mountain, Plane, BookOpen, Ruler, ShieldCheck, Stethoscope, Sun, Syringe, Toilet } from "lucide-react";
-import vaccicheckLogo from "@/assets/vaccicheck-logo.png.asset.json";
-import rxLogo from "@/assets/rxvigilance-logo.png.asset.json";
+import { Activity, Baby, Bug, Car, ClipboardList, Clock, Download, ExternalLink, FileText, GitBranch, Globe, Luggage, Mountain, Pill, Plane, BookOpen, Ruler, ShieldCheck, Stethoscope, Sun, Syringe, Toilet } from "lucide-react";
 import diarrheePdf from "@/assets/diarrhee-du-voyage.pdf.asset.json";
 import altitudeScalePdf from "@/assets/echelle-du-lac-louise.pdf.asset.json";
 import insectesPdf from "@/assets/les-piqures-d-insectes.pdf.asset.json";
