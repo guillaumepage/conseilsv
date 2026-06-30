@@ -27,13 +27,13 @@ const publicResources = [
   {
     title: "VacciCheck intégré",
     text: "Accès direct à votre outil de vérification vaccinale dès la connexion.",
-    logo: vaccicheckLogo.url,
+    icon: Syringe,
     iconClass: "bg-gradient-vaccicheck",
   },
   {
     title: "RxVigilance",
     text: "Formulaires PDF de conseils aux voyageurs regroupés dans le portail.",
-    logo: rxLogo.url,
+    icon: Pill,
     iconClass: "bg-gradient-rx",
   },
   {
@@ -47,6 +47,12 @@ const publicResources = [
     text: "Recommandations vaccinales par pays toujours à portée de clic.",
     icon: Plane,
     iconClass: "bg-gradient-inspq",
+  },
+  {
+    title: "CDC Travel Health",
+    text: "Recommandations santé voyage par destination des CDC.",
+    icon: Globe,
+    iconClass: "bg-gradient-cdc",
   },
   {
     title: "Registre de vaccination",
