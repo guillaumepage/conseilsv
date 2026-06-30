@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Activity, Baby, Bug, Car, ClipboardList, Clock, Download, ExternalLink, FileText, GitBranch, Luggage, Mountain, Plane, BookOpen, Ruler, ShieldCheck, Stethoscope, Sun, Syringe, Toilet } from "lucide-react";
-import vaccicheckLogo from "@/assets/vaccicheck-logo.png.asset.json";
-import rxLogo from "@/assets/rxvigilance-logo.png.asset.json";
+import { Activity, Baby, Bug, Car, ClipboardList, Clock, Download, ExternalLink, FileText, GitBranch, Globe, Luggage, Mountain, Pill, Plane, BookOpen, Ruler, ShieldCheck, Stethoscope, Sun, Syringe, Toilet } from "lucide-react";
 import diarrheePdf from "@/assets/diarrhee-du-voyage.pdf.asset.json";
 import altitudeScalePdf from "@/assets/echelle-du-lac-louise.pdf.asset.json";
 import insectesPdf from "@/assets/les-piqures-d-insectes.pdf.asset.json";
@@ -49,11 +47,12 @@ type Resource =
   | { kind: "toggle"; toggle: "rx" | "appsq" | "abcpq"; title: string; desc: string; badge: string; iconClass: string; logo?: string; icon?: React.ComponentType<{ className?: string }> };
 
 const resources: readonly Resource[] = [
-  { kind: "external", href: "https://vaccicheckapp.netlify.app/", title: "VacciCheck", desc: "Votre outil d'aide à la décision vaccinale. Accès complet à l'application.", logo: vaccicheckLogo.url, badge: "Application principale", iconClass: "bg-gradient-vaccicheck" },
-  { kind: "toggle", toggle: "rx", title: "RxVigilance", desc: "Formulaires PDF pratiques pour vos conseils aux voyageurs.", logo: rxLogo.url, badge: "Formulaires PDF", iconClass: "bg-gradient-rx" },
+  { kind: "external", href: "https://vaccicheckapp.netlify.app/", title: "VacciCheck", desc: "Votre outil d'aide à la décision vaccinale. Accès complet à l'application.", icon: Syringe, badge: "Application principale", iconClass: "bg-gradient-vaccicheck" },
+  { kind: "toggle", toggle: "rx", title: "RxVigilance", desc: "Formulaires PDF pratiques pour vos conseils aux voyageurs.", icon: Pill, badge: "Formulaires PDF", iconClass: "bg-gradient-rx" },
   { kind: "external", href: "https://msss.gouv.qc.ca/professionnels/vaccination/piq-vaccins/", title: "PIQ — Protocole d'immunisation", desc: "Protocole d'immunisation du Québec, ministère de la Santé.", icon: BookOpen, badge: "MSSS", iconClass: "bg-gradient-piq" },
   { kind: "external", href: "https://gia.sx5.rtss.qc.ca/auth/realms/msss/protocol/openid-connect/auth?client_id=faiwprod&redirect_uri=https%3A%2F%2Ffaius.santepublique.rtss.qc.ca&response_type=code&scope=openid%20email%20profile&nonce=74ba413b4089a0f1b99b1de04216720f0fVaVaQGG&state=8ef95d3fbad184deb52d5a98b3d96ab473y0fXrQM&code_challenge=R5uKjlnWB_SQ6Uz5HLgSOA-O2KhqZCO2avBJ-Ac0rQk&code_challenge_method=S256", title: "Registre de vaccination", desc: "Registre de vaccination du Québec — accès professionnel sécurisé.", icon: ShieldCheck, badge: "Québec", iconClass: "bg-gradient-registre" },
   { kind: "external", href: "https://www.inspq.qc.ca/sante-voyage/guide/pays", title: "INSPQ — Santé voyage", desc: "Guide d'intervention santé voyage : recommandations vaccinales par pays.", icon: Plane, badge: "Référence officielle", iconClass: "bg-gradient-inspq" },
+  { kind: "external", href: "https://wwwnc.cdc.gov/travel/destinations/list", title: "CDC — Travel Health", desc: "Recommandations santé voyage par destination des Centers for Disease Control.", icon: Globe, badge: "International", iconClass: "bg-gradient-cdc" },
   { kind: "toggle", toggle: "appsq", title: "APPSQ", desc: "Outils cliniques de l'APPSQ pour la santé voyage.", icon: Stethoscope, badge: "Formulaires PDF", iconClass: "bg-gradient-appsq" },
   { kind: "toggle", toggle: "abcpq", title: "ABCPQ", desc: "Algorithmes d'aide à la décision de l'ABCPQ.", icon: GitBranch, badge: "Algorithmes", iconClass: "bg-gradient-abcpq" },
 ];

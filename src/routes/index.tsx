@@ -1,9 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Plane, BookOpen, ArrowRight, FileText, ShieldCheck, Stethoscope, GitBranch } from "lucide-react";
+import { Plane, BookOpen, ArrowRight, FileText, ShieldCheck, Stethoscope, GitBranch, Syringe, Pill, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
-import vaccicheckLogo from "@/assets/vaccicheck-logo.png.asset.json";
-import rxLogo from "@/assets/rxvigilance-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,13 +27,13 @@ const publicResources = [
   {
     title: "VacciCheck intégré",
     text: "Accès direct à votre outil de vérification vaccinale dès la connexion.",
-    logo: vaccicheckLogo.url,
+    icon: Syringe,
     iconClass: "bg-gradient-vaccicheck",
   },
   {
     title: "RxVigilance",
     text: "Formulaires PDF de conseils aux voyageurs regroupés dans le portail.",
-    logo: rxLogo.url,
+    icon: Pill,
     iconClass: "bg-gradient-rx",
   },
   {
@@ -49,6 +47,12 @@ const publicResources = [
     text: "Recommandations vaccinales par pays toujours à portée de clic.",
     icon: Plane,
     iconClass: "bg-gradient-inspq",
+  },
+  {
+    title: "CDC Travel Health",
+    text: "Recommandations santé voyage par destination des CDC.",
+    icon: Globe,
+    iconClass: "bg-gradient-cdc",
   },
   {
     title: "Registre de vaccination",

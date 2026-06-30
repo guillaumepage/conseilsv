@@ -55,6 +55,8 @@
   --appsq-turquoise: #5cc4c4;
   --abcpq-blue: #0a78d6;
   --abcpq-coral: #ed6b6b;
+  --cdc-blue: #0057b6;
+  --cdc-teal: #0080a1;
 
   --background: oklch(0.99 0.005 260);
   --foreground: oklch(0.18 0.04 265);
@@ -94,6 +96,7 @@
   --gradient-registre: linear-gradient(135deg, var(--registre-light) 0%, var(--registre-deep) 100%);
   --gradient-appsq: linear-gradient(135deg, var(--appsq-slate) 0%, var(--appsq-slate) 45%, var(--appsq-turquoise) 100%);
   --gradient-abcpq: linear-gradient(135deg, var(--abcpq-blue) 0%, var(--abcpq-coral) 100%);
+  --gradient-cdc: linear-gradient(135deg, var(--cdc-blue) 0%, var(--cdc-teal) 100%);
   --gradient-brand-soft: linear-gradient(135deg, oklch(0.95 0.05 265) 0%, oklch(0.94 0.07 295) 100%);
   --gradient-radial: radial-gradient(circle at top right, oklch(0.85 0.15 280 / 0.35), transparent 60%),
                      radial-gradient(circle at bottom left, oklch(0.85 0.15 250 / 0.3), transparent 55%);
@@ -184,6 +187,9 @@
 }
 @utility bg-gradient-abcpq {
   background-image: var(--gradient-abcpq);
+}
+@utility bg-gradient-cdc {
+  background-image: var(--gradient-cdc);
 }
 @utility glass-card {
   background-color: color-mix(in oklab, var(--card) 80%, transparent);
