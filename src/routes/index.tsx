@@ -33,10 +33,10 @@ const publicResources = [
     iconClass: "bg-gradient-vaccicheck",
   },
   {
-    title: "INSPQ Santé voyage",
-    text: "Recommandations vaccinales par pays toujours à portée de clic.",
-    icon: Plane,
-    iconClass: "bg-gradient-inspq",
+    title: "RxVigilance",
+    text: "Formulaires PDF de conseils aux voyageurs regroupés dans le portail.",
+    logo: rxLogo.url,
+    iconClass: "bg-gradient-rx",
   },
   {
     title: "Protocole PIQ",
@@ -45,10 +45,10 @@ const publicResources = [
     iconClass: "bg-gradient-piq",
   },
   {
-    title: "RxVigilance",
-    text: "Formulaires PDF de conseils aux voyageurs regroupés dans le portail.",
-    logo: rxLogo.url,
-    iconClass: "bg-gradient-rx",
+    title: "INSPQ Santé voyage",
+    text: "Recommandations vaccinales par pays toujours à portée de clic.",
+    icon: Plane,
+    iconClass: "bg-gradient-inspq",
   },
   {
     title: "Registre de vaccination",
