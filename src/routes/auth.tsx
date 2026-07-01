@@ -146,7 +146,10 @@ function SignUpForm({ onDone }: { onDone: () => void }) {
       toast.error(error.message);
       return;
     }
-    toast.success("Compte créé ! Vérifiez votre courriel si confirmation requise, puis connectez-vous.");
+    toast.success(
+      "Compte créé ! Un administrateur doit approuver votre accès avant que vous puissiez utiliser ConseilSV. Vous pouvez vous connecter, mais l'accès au tableau de bord sera bloqué en attendant l'approbation.",
+      { duration: 8000 }
+    );
     onDone();
   }
 
