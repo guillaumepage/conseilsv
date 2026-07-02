@@ -55,7 +55,7 @@ const publicResources = [
     iconClass: "bg-gradient-cdc",
   },
   {
-    title: "Voyage.gc.ca",
+    title: "Gouvernement du Canada — Voyage et tourisme",
     text: "Conseils aux voyageurs du gouvernement du Canada.",
     icon: MapPin,
     iconClass: "bg-gradient-canada",
