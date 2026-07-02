@@ -33,7 +33,14 @@ export const getMyAdminStatus = createServerFn({ method: "GET" })
       .eq("role", "admin")
       .maybeSingle();
     if (error) throw new Error(error.message);
-    return { isAdmin: !!data };
+    const { data: profile } = await supabaseAdmin
+      .from("profiles")
+      .select("subscription_tier")
+      .eq("id", context.userId)
+      .maybeSingle();
+    const isAdmin = !!data;
+    const tier = profile?.subscription_tier ?? "free";
+    return { isAdmin, tier, hasVacciCheckAccess: isAdmin || tier === "pro" };
   });
 
 export const listUsers = createServerFn({ method: "GET" })
