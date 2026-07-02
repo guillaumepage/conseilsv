@@ -58,7 +58,7 @@ type Resource =
   | { kind: "toggle"; toggle: "rx" | "appsq" | "abcpq"; title: string; desc: string; badge: string; iconClass: string; logo?: string; icon?: React.ComponentType<{ className?: string }> };
 
 const resources: readonly Resource[] = [
-  { kind: "vaccicheck", title: "VacciCheck", desc: "Votre outil d'aide à la décision vaccinale. Accès complet à l'application.", icon: Syringe, badge: "Application principale", iconClass: "bg-gradient-vaccicheck" },
+  { kind: "vaccicheck", title: "VacciCheck", desc: "Outil d'aide à la décision vaccinale. Réservé aux abonnés payants ConseilSV.", icon: Syringe, badge: "Abonnement payant", iconClass: "bg-gradient-vaccicheck" },
   { kind: "toggle", toggle: "rx", title: "RxVigilance", desc: "Formulaires PDF pratiques pour vos conseils aux voyageurs.", icon: Pill, badge: "Formulaires PDF", iconClass: "bg-gradient-rx" },
   { kind: "external", href: "https://msss.gouv.qc.ca/professionnels/vaccination/piq-vaccins/", title: "PIQ — Protocole d'immunisation", desc: "Protocole d'immunisation du Québec, ministère de la Santé.", icon: BookOpen, badge: "MSSS", iconClass: "bg-gradient-piq" },
   { kind: "external", href: "https://gia.sx5.rtss.qc.ca/auth/realms/msss/protocol/openid-connect/auth?client_id=faiwprod&redirect_uri=https%3A%2F%2Ffaius.santepublique.rtss.qc.ca&response_type=code&scope=openid%20email%20profile&nonce=74ba413b4089a0f1b99b1de04216720f0fVaVaQGG&state=8ef95d3fbad184deb52d5a98b3d96ab473y0fXrQM&code_challenge=R5uKjlnWB_SQ6Uz5HLgSOA-O2KhqZCO2avBJ-Ac0rQk&code_challenge_method=S256", title: "Registre de vaccination", desc: "Registre de vaccination du Québec — accès professionnel sécurisé.", icon: ShieldCheck, badge: "Québec", iconClass: "bg-gradient-registre" },
