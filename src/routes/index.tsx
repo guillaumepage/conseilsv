@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Plane, BookOpen, ArrowRight, Compass, FileText, HeartPulse, MapPin, ShieldCheck, Stethoscope, GitBranch, Syringe, Pill, Globe } from "lucide-react";
+import { Plane, BookOpen, ArrowRight, Compass, FileText, HeartPulse, MapPin, Search, ShieldCheck, Stethoscope, GitBranch, Syringe, Pill, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
 
@@ -71,6 +71,12 @@ const publicResources = [
     text: "Recommandations santé voyage par pays (Royaume-Uni).",
     icon: Compass,
     iconClass: "bg-gradient-nathnac",
+  },
+  {
+    title: "OpenEvidence",
+    text: "Moteur de recherche médical basé sur les données probantes.",
+    icon: Search,
+    iconClass: "bg-gradient-openevidence",
   },
   {
     title: "Registre de vaccination",
