@@ -116,16 +116,31 @@ function Dashboard() {
   const openVacciCheck = async () => {
     if (openingVC) return;
     setOpeningVC(true);
-    // Open a blank tab synchronously so pop-up blockers don't fire.
-    const win = window.open("about:blank", "_blank", "noopener");
+    // Open a controlled blank tab synchronously so pop-up blockers don't fire.
+    // Avoid the "noopener" feature here because some browsers return null and leave
+    // an unreachable about:blank tab behind.
+    const win = window.open("", "_blank");
+    if (!win) {
+      toast.error("Impossible d'ouvrir VacciCheck. Autorisez les fenêtres contextuelles puis réessayez.");
+      setOpeningVC(false);
+      return;
+    }
+
+    win.document.title = "Ouverture de VacciCheck…";
+    win.document.body.innerHTML = '<p style="font-family:system-ui;margin:24px;color:#334155">Ouverture de VacciCheck…</p>';
     try {
       const { token } = await issueToken();
       const url = `https://vaccicheckapp.netlify.app/?vct=${encodeURIComponent(token)}`;
-      if (win) win.location.href = url;
-      else window.location.href = url;
+      try {
+        win.opener = null;
+      } catch {
+        // Ignore browsers that block updating opener.
+      }
+      win.location.replace(url);
     } catch (err) {
-      if (win) win.close();
-      toast.error("Impossible d'ouvrir VacciCheck. Réessayez.");
+      win.close();
+      const message = err instanceof Error && err.message ? err.message : "Impossible d'ouvrir VacciCheck. Réessayez.";
+      toast.error(message);
       console.error(err);
     } finally {
       setOpeningVC(false);

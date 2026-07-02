@@ -21,6 +21,21 @@ export const issueVacciCheckToken = createServerFn({ method: "POST" })
     const secret = process.env.VACCICHECK_GATE_SECRET;
     if (!secret) throw new Error("VACCICHECK_GATE_SECRET not configured");
 
+    const { data: profile, error: profileError } = await context.supabase
+      .from("profiles")
+      .select("subscription_tier")
+      .eq("id", context.userId)
+      .maybeSingle();
+    if (profileError) throw new Error(profileError.message);
+
+    const { data: isAdmin, error: roleError } = await context.supabase
+      .rpc("has_role", { _user_id: context.userId, _role: "admin" });
+    if (roleError) throw new Error(roleError.message);
+
+    if (profile?.subscription_tier !== "pro" && !isAdmin) {
+      throw new Error("Accès réservé aux comptes Payant ConseilSV.");
+    }
+
     const now = Math.floor(Date.now() / 1000);
     const payload = {
       sub: context.userId,
