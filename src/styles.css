@@ -204,6 +204,9 @@
 @utility bg-gradient-nathnac {
   background-image: var(--gradient-nathnac);
 }
+@utility bg-gradient-openevidence {
+  background-image: var(--gradient-openevidence);
+}
 @utility glass-card {
   background-color: color-mix(in oklab, var(--card) 80%, transparent);
   backdrop-filter: blur(12px);
