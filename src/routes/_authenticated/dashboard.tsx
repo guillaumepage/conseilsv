@@ -111,6 +111,13 @@ function Dashboard() {
   const [openSection, setOpenSection] = useState<null | "rx" | "appsq" | "abcpq">(null);
   const [openingVC, setOpeningVC] = useState(false);
   const issueToken = useServerFn(issueVacciCheckToken);
+  const fetchAccess = useServerFn(getMyAdminStatus);
+  const { data: access } = useQuery({
+    queryKey: ["my-access"],
+    queryFn: () => fetchAccess(),
+    staleTime: 60_000,
+  });
+  const hasVacciCheckAccess = !!access?.hasVacciCheckAccess;
 
   const toggle = (key: "rx" | "appsq" | "abcpq") =>
     setOpenSection((prev) => (prev === key ? null : key));
