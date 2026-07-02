@@ -100,6 +100,7 @@
   --gradient-canada: linear-gradient(135deg, #ff0000 0%, #223349 100%);
   --gradient-oms: linear-gradient(135deg, #0d2c66 0%, #6b8bbf 60%, #eef0f3 100%);
   --gradient-nathnac: linear-gradient(135deg, #c9b997 0%, #1668b3 100%);
+  --gradient-openevidence: linear-gradient(135deg, #e5623b 0%, #404040 100%);
   --gradient-brand-soft: linear-gradient(135deg, oklch(0.95 0.05 265) 0%, oklch(0.94 0.07 295) 100%);
   --gradient-radial: radial-gradient(circle at top right, oklch(0.85 0.15 280 / 0.35), transparent 60%),
                      radial-gradient(circle at bottom left, oklch(0.85 0.15 250 / 0.3), transparent 55%);
