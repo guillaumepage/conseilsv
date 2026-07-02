@@ -86,7 +86,20 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
-      profession: "medecin" | "pharmacien" | "infirmiere" | "etudiant" | "autre"
+      profession:
+        | "medecin"
+        | "pharmacien"
+        | "infirmiere"
+        | "etudiant"
+        | "autre"
+        | "infirmiere_auxiliaire"
+        | "sage_femme"
+        | "inhalotherapeute"
+        | "etudiant_pharmacie"
+        | "etudiant_medecine"
+        | "etudiant_soins_infirmiers"
+        | "assistant_technique_pharmacie"
+        | "technicien_pharmacie"
       subscription_tier: "free" | "pro"
     }
     CompositeTypes: {
@@ -216,7 +229,21 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
-      profession: ["medecin", "pharmacien", "infirmiere", "etudiant", "autre"],
+      profession: [
+        "medecin",
+        "pharmacien",
+        "infirmiere",
+        "etudiant",
+        "autre",
+        "infirmiere_auxiliaire",
+        "sage_femme",
+        "inhalotherapeute",
+        "etudiant_pharmacie",
+        "etudiant_medecine",
+        "etudiant_soins_infirmiers",
+        "assistant_technique_pharmacie",
+        "technicien_pharmacie",
+      ],
       subscription_tier: ["free", "pro"],
     },
   },

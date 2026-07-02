@@ -213,7 +213,21 @@ function AdminPage() {
   );
 }
 
-type Profession = "medecin" | "pharmacien" | "infirmiere" | "etudiant" | "autre";
+type Profession =
+  | "assistant_technique_pharmacie"
+  | "etudiant_medecine"
+  | "etudiant_pharmacie"
+  | "etudiant_soins_infirmiers"
+  | "infirmiere"
+  | "infirmiere_auxiliaire"
+  | "inhalotherapeute"
+  | "medecin"
+  | "pharmacien"
+  | "sage_femme"
+  | "technicien_pharmacie"
+  // legacy values kept for backward-compat with existing rows
+  | "etudiant"
+  | "autre";
 type SubscriptionTier = "free" | "pro";
 type AdminUser = {
   id: string;
@@ -228,9 +242,17 @@ type AdminUser = {
 };
 
 const PROFESSION_LABELS: Record<Profession, string> = {
+  assistant_technique_pharmacie: "Assistant(e) technique en pharmacie",
+  etudiant_medecine: "Étudiant(e) en médecine",
+  etudiant_pharmacie: "Étudiant(e) en pharmacie",
+  etudiant_soins_infirmiers: "Étudiant(e) en soins infirmiers",
+  infirmiere: "Infirmier(ère)",
+  infirmiere_auxiliaire: "Infirmier(ère) auxiliaire",
+  inhalotherapeute: "Inhalothérapeute",
   medecin: "Médecin",
   pharmacien: "Pharmacien(ne)",
-  infirmiere: "Infirmier(ère)",
+  sage_femme: "Sage-femme",
+  technicien_pharmacie: "Technicien(ne) en pharmacie",
   etudiant: "Étudiant(e)",
   autre: "Autre",
 };
@@ -249,13 +271,21 @@ type AdminUserForm = {
   isAdmin: boolean;
 };
 
+// Alphabetical order (French) — excludes legacy values from the picker
 const PROFESSIONS: { value: Profession; label: string }[] = [
+  { value: "assistant_technique_pharmacie", label: "Assistant(e) technique en pharmacie" },
+  { value: "etudiant_medecine", label: "Étudiant(e) en médecine" },
+  { value: "etudiant_pharmacie", label: "Étudiant(e) en pharmacie" },
+  { value: "etudiant_soins_infirmiers", label: "Étudiant(e) en soins infirmiers" },
+  { value: "infirmiere", label: "Infirmier(ère)" },
+  { value: "infirmiere_auxiliaire", label: "Infirmier(ère) auxiliaire" },
+  { value: "inhalotherapeute", label: "Inhalothérapeute" },
   { value: "medecin", label: "Médecin" },
   { value: "pharmacien", label: "Pharmacien(ne)" },
-  { value: "infirmiere", label: "Infirmier(ère)" },
-  { value: "etudiant", label: "Étudiant(e)" },
-  { value: "autre", label: "Autre" },
+  { value: "sage_femme", label: "Sage-femme" },
+  { value: "technicien_pharmacie", label: "Technicien(ne) en pharmacie" },
 ];
+
 
 function EditUserDialog({
   user,

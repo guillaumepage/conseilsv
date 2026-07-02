@@ -15,15 +15,33 @@ export const Route = createFileRoute("/_authenticated/profile")({
   component: ProfilePage,
 });
 
-type Profession = "medecin" | "pharmacien" | "infirmiere" | "etudiant" | "autre";
+type Profession =
+  | "assistant_technique_pharmacie"
+  | "etudiant_medecine"
+  | "etudiant_pharmacie"
+  | "etudiant_soins_infirmiers"
+  | "infirmiere"
+  | "infirmiere_auxiliaire"
+  | "inhalotherapeute"
+  | "medecin"
+  | "pharmacien"
+  | "sage_femme"
+  | "technicien_pharmacie";
 
 const PROFESSIONS: { value: Profession; label: string }[] = [
+  { value: "assistant_technique_pharmacie", label: "Assistant(e) technique en pharmacie" },
+  { value: "etudiant_medecine", label: "Étudiant(e) en médecine" },
+  { value: "etudiant_pharmacie", label: "Étudiant(e) en pharmacie" },
+  { value: "etudiant_soins_infirmiers", label: "Étudiant(e) en soins infirmiers" },
+  { value: "infirmiere", label: "Infirmier(ère)" },
+  { value: "infirmiere_auxiliaire", label: "Infirmier(ère) auxiliaire" },
+  { value: "inhalotherapeute", label: "Inhalothérapeute" },
   { value: "medecin", label: "Médecin" },
   { value: "pharmacien", label: "Pharmacien(ne)" },
-  { value: "infirmiere", label: "Infirmier(ère)" },
-  { value: "etudiant", label: "Étudiant(e)" },
-  { value: "autre", label: "Autre" },
+  { value: "sage_femme", label: "Sage-femme" },
+  { value: "technicien_pharmacie", label: "Technicien(ne) en pharmacie" },
 ];
+
 
 function ProfilePage() {
   const [loading, setLoading] = useState(true);
