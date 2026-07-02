@@ -30,6 +30,7 @@ import grossessePdf from "@/assets/voyager-grossesse.pdf.asset.json";
 import decalagePdf from "@/assets/le-decalage-horaire.pdf.asset.json";
 import planificationPdf from "@/assets/planification-voyage-prudence-sante.pdf.asset.json";
 import avionPdf from "@/assets/le-transport-en-avion.pdf.asset.json";
+import feuilletsCombinesPdf from "@/assets/feuillets-essentiels-combines.pdf.asset.json";
 import appsqPaludismePdf from "@/assets/appsq-prophylaxie-paludisme.pdf.asset.json";
 import appsqDiarrheePdf from "@/assets/appsq-diarrhee-voyageur.pdf.asset.json";
 import appsqMontagnesPdf from "@/assets/appsq-mal-aigu-montagnes.pdf.asset.json";
